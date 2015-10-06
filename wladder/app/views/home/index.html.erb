@@ -1,1 +1,29 @@
-<h1>Word Ladder Home Page</h1>
+<h1>Phil's Word Ladder Home Page</h1>
+<br>
+<p>
+Fill in each step with a word that differs from the word in the previous step by no more than one character.  Once you reach a word that differs from the goal by only one letter, you can stop and leave the remainder of the steps empty.
+</p>
+<br>
+<h3>Start Word: <%= @start_word %></h3>
+<%= form_tag(check_path, method: "get") do %>
+  <%= label_tag(:word1, "word 1") %>
+  <%= text_field_tag(:word1) %>
+  <br>
+  <%= label_tag(:word2, "word 2") %>
+  <%= text_field_tag(:word2) %>
+  <br>
+  <%= label_tag(:word3, "word 3") %>
+  <%= text_field_tag(:word3) %>
+  <br>
+  <%= label_tag(:word4, "word 4") %>
+  <%= text_field_tag(:word4) %>
+  <br>
+  <%= label_tag(:word5, "word 5") %>
+  <%= text_field_tag(:word5) %>
+  <br>
+  <%= submit_tag("Check Answer") %>
+  <%= hidden_field_tag("start_word", "#{@start_word}") %>
+  <%= hidden_field_tag("end_word", "#{@end_word}") %>
+<%end%>
+<h3>End word: <%= @end_word %></h3>
+<br>

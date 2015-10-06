@@ -1,0 +1,25 @@
+<%= link_to "Play Again", root_path %>
+<br>
+<br>
+<h3>Your Guesses</h3>
+<table cellpadding="3" border="1">
+  <tbody>
+    <tr>
+      <td>Start:</td>
+      <td><%= @start_word %> </td>
+    </tr>
+    <% num = 1 %>
+    <% @words.each do |word| %>
+      <tr>
+        <td>Step <%= num %>:</td>
+        <td> <%=word%> </td>
+        <% num += 1 %>
+      </tr>
+    <%end%>
+    <tr>
+      <td>End:</td>
+      <td><%= @end_word %></td>
+    </tr>
+  </tbody>
+</table>
+<h3>Incorrect.  You Lose!</h3>
