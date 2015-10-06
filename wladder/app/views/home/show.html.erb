@@ -9,7 +9,7 @@
       <td><%= @start_word %> </td>
     </tr>
     <% num = 1 %>
-    <% @words.each do |word| %>
+    <% @guesses.each do |word| %>
       <tr>
         <td>Step <%= num %>:</td>
         <td> <%=word%> </td>
@@ -22,4 +22,8 @@
     </tr>
   </tbody>
 </table>
+<% if @legal %>
+<h3>HOLY SHIT YOU WON! WHAT!?! HOW!?!</h3>
+<%else%>
 <h3>Incorrect.  You Lose!</h3>
+<%end%>

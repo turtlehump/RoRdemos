@@ -10,15 +10,12 @@ class HomeController < ApplicationController
   end
 
   def show
-    @words = Array.new
-    @words.push(params[:word1])
-    @words.push(params[:word2])
-    @words.push(params[:word3])
-    @words.push(params[:word4])
-    @words.push(params[:word5])
-    @words.delete_if { |a| a == ""}
+    @guesses = [params[:word1], params[:word2], params[:word3], params[:word4], params[:word5]]
+    @guesses.each_with_index { |word, i| @guesses[i] = nil if word == ""}.compact!
     @start_word = params["start_word"]
     @end_word = params["end_word"]
+    @word_ladder = [params[:start_word], params[:word1], params[:word2], params[:word3], params[:word4], params[:word5], params[:end_word]]
+    @legal = legal @word_ladder
   end
 
 end
