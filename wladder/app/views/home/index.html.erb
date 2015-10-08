@@ -21,9 +21,9 @@ Fill in each step with a word that differs from the word in the previous step by
   <%= label_tag(:word5, "word 5") %>
   <%= text_field_tag(:word5) %>
   <br>
+  <h3>End word: <%= @end_word %></h3>
   <%= submit_tag("Check Answer") %>
   <%= hidden_field_tag("start_word", "#{@start_word}") %>
   <%= hidden_field_tag("end_word", "#{@end_word}") %>
 <%end%>
-<h3>End word: <%= @end_word %></h3>
 <br>
