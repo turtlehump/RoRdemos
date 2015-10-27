@@ -5,13 +5,6 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:edit, :update, :destroy]
 
-  # GET /professors/:professor_id/ratings
-  def index
-    # index is now all the ratings for a single professor (not all the ratings)
-    @professor = Professor.find params[:professor_id]
-    @ratings = @professor.ratings
-  end
-
   # GET professors/:professor_id/ratings/new
   # Create a new rating in the context of a Professor object
   # that way the Rating's foreign key (professor_id) will be
@@ -41,7 +34,7 @@ class RatingsController < ApplicationController
     @rating = @professor.ratings.new(rating_params)
 
     if @rating.save
-      redirect_to professor_ratings_url(@professor) , notice: 'Rating was successfully created.'
+      redirect_to professor_url(@professor) , notice: 'Rating was successfully created.'
     else
       render :new
     end
@@ -53,7 +46,7 @@ class RatingsController < ApplicationController
   def update
     #@rating = Rating.find(params[:id])
     if @rating.update(rating_params)
-      redirect_to professor_ratings_url(@rating.professor), notice: 'Rating was successfully updated.'
+      redirect_to professor_url(@rating.professor), notice: 'Rating was successfully updated.'
     else
       render :edit
     end
@@ -64,7 +57,7 @@ class RatingsController < ApplicationController
     #@rating = Rating.find(params[:id])
     @rating.destroy
     #can we do this after we call destroy...
-    redirect_to professor_ratings_url(@rating.professor) , notice: 'Rating was successfully destroyed.'
+    redirect_to professor_url(@rating.professor) , notice: 'Rating was successfully destroyed.'
   end
 
   private

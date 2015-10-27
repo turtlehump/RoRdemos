@@ -10,6 +10,9 @@ class ProfessorsController < ApplicationController
   # GET /professors/1
   #only one professor
   def show
+    # create an empty Rating so we can allow the user to 
+    # fill it in on the show view
+    @rating = @professor.ratings.new
   end
 
   # GET /professors/new
