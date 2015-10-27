@@ -23,7 +23,7 @@
     <% @topic.references.each do |reference| %>
       <% if !reference.new_record? %>
         <tr>
-          <td><%= reference.URL %></td>
+          <td><a target="_blank" href="<%= reference.URL %>"><%=reference.URL%></a></td>
           <td><%= reference.created_at %></td>
           <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
           <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
