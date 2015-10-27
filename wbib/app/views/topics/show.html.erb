@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1><strong>Title:</strong><%= @topic.title %></h1>
+
+
+<br>
+
+<h3><strong>Description:</strong><%= @topic.description %></h3>
+
+<br>
+<br>
+
+<table cellpadding="3" border="1">
+  <thead>
+      <tr>
+        <th>URL</th>
+        <th>Created At</th>
+        <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topic.references.each do |reference| %>
+      <% if !reference.new_record? %>
+        <tr>
+          <td><%= reference.URL %></td>
+          <td><%= reference.created_at %></td>
+          <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
+          <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+<h3>Create New Reference</h3>
+<%= render 'references/form' %>
+<br>
+<br>
+
+<%= link_to "Show References", topic_references_path(@topic) %> |
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Show all Topics', topics_path %>

@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+topics = Topic.create(
+  [
+    { title: 'Computers', description: 'Hardware, Software, Malware, Everything!'},
+    { title: '2016 Election', description: 'Everything You need to know about the canidates of the 2016 US Presidential Election'}
+  ]
+)
+
+references = Reference.create(
+  [
+    { URL: 'http://www.newegg.com', topic_id: topics[0].id},
+    { URL: 'http://www.ecst.csuchico.edu/~tyson', topic_id: topics[0].id},
+    { URL: 'http://www.cnn.com', topic_id: topics[1].id}
+  ]
+)

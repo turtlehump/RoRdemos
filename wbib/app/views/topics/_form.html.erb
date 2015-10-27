@@ -1,0 +1,37 @@
+<%= form_for(@topic) do |f| %>
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <% if @topic.references.last.new_record? %>
+    <%= f.fields_for :references do |references_form| %>
+      <h3>New Rating</h3>
+      <div style="margin-left:30px;">
+        <div class="field">
+          <%= references_form.label :URL %><br>
+          <%= references_form.text_field :URL %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
