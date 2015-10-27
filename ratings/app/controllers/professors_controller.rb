@@ -19,6 +19,11 @@ class ProfessorsController < ApplicationController
   #a view to ask the user for the information on the professor
   def new
     @professor = Professor.new
+    # if we created multiple new ratings, they would all 
+    # show up in the new view
+    # The new Rating is put into the Professor's array of Ratings
+    # that we can access in the view using @professors.ratings
+    @professor.ratings.new
   end
 
   # GET /professors/1/edit
@@ -61,6 +66,6 @@ class ProfessorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def professor_params
-      params.require(:professor).permit(:first, :last, :university)
+      params.require(:professor).permit(:first, :last, :university, ratings_attributes: [:course, :comment, :rating])
     end
 end

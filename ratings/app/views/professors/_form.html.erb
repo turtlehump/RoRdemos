@@ -23,6 +23,25 @@
     <%= f.label :university %><br>
     <%= f.text_field :university %>
   </div>
+  <% if @professor.ratings.last.new_record? %>
+    <%= f.fields_for :ratings do |ratings_form| %>
+      <h3>New Rating</h3>
+      <div style="margin-left:30px;">
+        <div class="field">
+          <%= ratings_form.label :course %><br>
+          <%= ratings_form.text_field :course %>
+        </div>
+        <div class="field">
+          <%= ratings_form.label :comment %><br>
+          <%= ratings_form.text_field :comment %>
+        </div>
+        <div class="field">
+          <%= ratings_form.label :rating %><br>
+          <%= ratings_form.number_field :rating %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
