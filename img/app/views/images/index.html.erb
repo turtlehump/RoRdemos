@@ -1,0 +1,11 @@
+<style>
+.image {
+    display: inline-block;
+}
+</style>
+
+<h1>All Images</h1>
+<br>
+<% @images.each do |image| %>
+<dir class='image'><%= image.filename %><br><%= image.user.name %></dir>
+<% end %>
