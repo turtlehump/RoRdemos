@@ -8,14 +8,14 @@
   <h2>OWNED IMAGES</h2>
   <%@owned_imgs.each do |image|%>
     <dir class='image'>
-    <img src='/images/<%=image.filename%>' style='width:100px;height:100px;>'>
+    <img src='/images/<%=image.filename%>' style='width:100px;>'>
     </dir>
   <%end%>
   <hr>
   <h2>PRIVATE IMAGES</h2>
   <%@private_imgs.each do |image|%>
     <dir class='image'>
-    <img src='/images/<%=image.filename%>' style='width:100px;height:100px;>'><br><%=image.user.name%>
+    <img src='/images/<%=image.filename%>' style='width:100px;>'><br><%=image.user.name%>
     </dir>
   <%end%>
   <hr>
@@ -23,6 +23,6 @@
 <h2>PUBLIC IMAGES</h2>
 <%@public_imgs.each do |image|%>
   <dir class='image'>
-  <img src='/images/<%=image.filename%>' style='width:100px;height:100px;>'><br><%=image.user.name%>
+  <img src='/images/<%=image.filename%>' style='width:100px;>'><br><%=image.user.name%>
   </dir>
 <%end%>
