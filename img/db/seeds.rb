@@ -41,6 +41,7 @@ users = User.create(
     { email: 'x@x.com', name: "Mr. Xerox", password: "x", password_confirmation: "x"},
     { email: 'y@y.com', name: "Mr. Yak", password: "y", password_confirmation: "y"},
     { email: 'z@z.com', name: "Mr. Zebra", password: "z", password_confirmation: "z"},
+    { email: 'sa@sa.com', name: "Mr. Admin", password: "sa", password_confirmation: "sa", admin: true},
   ]
 )
 
