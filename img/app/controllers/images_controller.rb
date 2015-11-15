@@ -16,6 +16,7 @@ class ImagesController < ApplicationController
 
   # GET /professors/1
   def show
+    @tags = @image.tags
   end
 
   # GET /professors/new

@@ -1,1 +1,5 @@
 <img src='/images/<%=@image.filename%>'>
+
+<%@tags.each do |tag|%>
+  <p>Tag: <%=tag.str%></p>
+<%end%>
