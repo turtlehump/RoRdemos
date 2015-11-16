@@ -1,9 +1,11 @@
 <img src='/images/<%=@image.filename%>'>
 
-<%@tags.each do |tag|%>
+<h3>Tags</h3>
+<% @tags.each do |tag| %>
   <div>
-  Tag: <%=tag.str%>
-  <%= link_to 'Edit', edit_tag_path(tag) %>
-  <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= tag.str %>
+  <% if current_user == @image.user %>
+    <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%end%>
   </div>
 <%end%>

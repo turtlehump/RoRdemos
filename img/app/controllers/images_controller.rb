@@ -1,5 +1,7 @@
+# This controller does not have an edit page.
+# You cannot edit a image, only delete and upload a new one
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :update, :destroy]
 
   # GET /professors
   def index
@@ -14,23 +16,19 @@ class ImagesController < ApplicationController
     @public_imgs = @imgs.map {|image| image if !image.private}.compact
   end
 
-  # GET /professors/1
+  # GET /images/1
   def show
     @tags = @image.tags
   end
 
-  # GET /professors/new
+  # GET /images/new
   def new
     @image = Image.new
   end
 
-  # GET /professors/1/edit
-  def edit
-  end
-
-  # POST /professors
+  # POST /images
   def create
-    @image = Image.new(professor_params)
+    @image = Image.new(image_params)
 
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
