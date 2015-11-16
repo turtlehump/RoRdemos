@@ -1,0 +1,12 @@
+<h1><%= @image.filename %>'s Tags </h1>
+<hr>
+<% @tags.each do |tag| %>
+  <%= tag.str %>
+  <%= link_to 'Edit', edit_tag_path(tag) %>
+  <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+<% end %>
+<br>
+<%= link_to 'New Tag', new_image_tag_path %> |
+<%= link_to "Back to #{@image.filename}'s page", image_path(@image) %>
+
