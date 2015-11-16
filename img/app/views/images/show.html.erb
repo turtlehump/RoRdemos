@@ -1,11 +1,15 @@
 <img src='/images/<%=@image.filename%>'>
 
 <h3>Tags</h3>
-<% @tags.each do |tag| %>
-  <div>
-  <%= tag.str %>
-  <% if current_user == @image.user %>
-    <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% @image.tags.each do |tag| %>
+  <% if !tag.new_record? %>
+    <div>
+    <%= tag.str %>
+    <% if current_user == @image.user %>
+      <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+    </div>
   <%end%>
-  </div>
 <%end%>
+
+<%= render 'tags/form' %>

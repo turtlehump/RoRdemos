@@ -3,19 +3,7 @@
 # show a single tag
 
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:edit, :update, :destroy]
-
-  # GET /images/:image_id/tags
-  def index
-    # index is now all the tags for a single image (not all the tags)
-    # the URL will contain the id of the current image (:image_id)
-    # use the :image_id parameter to find all the tags
-    @image = Image.find params[:image_id]
-    # the has_many function called in app/models/image.rb created the 
-    # function "tags" which will return an array of all the tags 
-    # with the image foreign key matching @image
-    @tags = @image.tags
-  end
+  before_action :set_tag, only: [:destroy]
 
   # GET images/:image_id/tags/new
   # Create a new tag in the context of a Image object
@@ -31,10 +19,6 @@ class TagsController < ApplicationController
     @tag = @image.tags.new
   end
 
-  # GET /tags/1/edit
-  def edit
-    # edit routes are not nested (we already know our image's foreign_key)
-  end
 
   # POST images:/:image_id/tags
   # we need the image's key in the URL to make sure that someone 
@@ -45,20 +29,9 @@ class TagsController < ApplicationController
     @tag = @image.tags.new(tag_params)
 
     if @tag.save
-      redirect_to image_tags_url(@image) , notice: 'Tag was successfully created.'
-    else
+      redirect_to image_url(@image) , notice: 'Tag was successfully created.'
+    else #this should never happen, you cant input a bad tag
       render :new
-    end
-  end
-
-  # PATCH/PUT /tags/1
-  # updates don't have to be nested because the image foreign key is already set
-  # and cannot be changed by edit (note that image_id is not permitted in tag_params())
-  def update
-    if @tag.update(tag_params)
-      redirect_to image_tags_url(@tag.image), notice: 'Tag was successfully updated.'
-    else
-      render :edit
     end
   end
 
