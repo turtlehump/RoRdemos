@@ -19,6 +19,12 @@ class ImagesController < ApplicationController
   # GET /images/1
   def show
     @tag = @image.tags.new
+    @inside_users = @image.image_users.map { |iu| iu.user }.compact
+    @users = User.all
+    cur_user = [current_user]
+    @possible_users = @users - cur_user
+    @outsider_users = @possible_users - @inside_users
+    @image_user = @image.image_users.new
   end
 
   # GET /images/new

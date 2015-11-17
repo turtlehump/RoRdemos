@@ -9,11 +9,11 @@
   <%= link_to 'New Image', new_image_path %><br>
   <%if @owned_imgs.size > 0%>
     <%@owned_imgs.each do |image|%>
-      <dir class='image'>
+      <div class='image'>
         <a href="/images/<%=image.id%>">
           <img src='/images/<%=image.filename%>' style='width:100px;>'>
         </a>
-      </dir>
+      </div>
     <%end%>
   <%else%>
     <p>You have not uploaded any images</p>
@@ -23,13 +23,13 @@
   <h2>PRIVATE IMAGES</h2>
   <%if @private_imgs.size > 0%>
     <%@private_imgs.each do |image|%>
-      <dir class='image'>
+      <div class='image'>
         <a href="/images/<%=image.id%>">
           <img src='/images/<%=image.filename%>' style='width:100px;>'>
         </a>
         <br>
         <%=image.user.name%>
-      </dir>
+      </div>
     <%end%>
   <%else%>
     <p>Nobody has shared any images with you... I'm sorry... :(</p>
@@ -39,11 +39,11 @@
 
 <h2>PUBLIC IMAGES</h2>
 <%@public_imgs.each do |image|%>
-  <dir class='image'>
+  <div class='image'>
     <a href="/images/<%=image.id%>">
       <img src='/images/<%=image.filename%>' style='width:100px;>'>
     </a>
     <br>
     <%=image.user.name%>
-  </dir>
+  </div>
 <%end%>

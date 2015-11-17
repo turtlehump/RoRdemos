@@ -44,14 +44,25 @@
 <% @image.tags.each do |tag| %>
   <% if !tag.new_record? %>
     <div>
-    <%= tag.str %>
-    <% if current_user == @image.user %>
-      <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%end%>
+      <%= tag.str %>
+      <% if current_user == @image.user %>
+        <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%end%>
     </div>
   <%end%>
 <%end%>
 <br>
 <% if current_user == @image.user %>
   <%= render 'tags/form' %>
+<%end%>
+
+<% if current_user == @image.user %>
+  <h3>Permissions</h3>
+  <% @image.users.each do |user| %>
+    <div>
+      <%= user.name %>
+    </div>
+  <%end%>
+  <br>
+  <%= render 'image_users/form' %>
 <%end%>

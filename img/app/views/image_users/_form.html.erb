@@ -1,0 +1,21 @@
+<%= form_for([@image, @image_user]) do |f| %>
+  <% if @image_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image_user.errors.count, "error") %> prohibited this image_user from being saved:</h2>
+
+      <ul>
+      <% @image_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="user">
+    <%= f.label :new_permission %><br>
+    <%= f.select :user_id, @outsider_users.map{ |u| [u.name, u.id] } %>
+  </div>
+  <div class="actions">
+    <%= f.submit "New Permission" %>
+  </div>
+<% end %>
