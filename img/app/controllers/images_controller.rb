@@ -5,15 +5,15 @@ class ImagesController < ApplicationController
 
   # GET /professors
   def index
-    @imgs = Image.all
+    @imgs = Image.all.shuffle
     iu = ImageUser.all
     if current_user
-      @owned_imgs = @imgs.map {|image| image if image.user == current_user}.compact
-      @private_imgs = iu.map {|image_user| image_user.image if image_user.user == current_user}.compact
+      @owned_imgs = @imgs.map {|image| image if image.user == current_user}.compact.shuffle
+      @private_imgs = iu.map {|image_user| image_user.image if image_user.user == current_user}.compact.shuffle
       @imgs = @imgs - @owned_imgs
       @imgs = @imgs - @private_imgs
     end
-    @public_imgs = @imgs.map {|image| image if !image.private}.compact
+    @public_imgs = @imgs.map {|image| image if !image.private}.compact.shuffle
   end
 
   # GET /images/1
