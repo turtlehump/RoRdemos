@@ -6,6 +6,8 @@
     <%else%>
       <%="public"%>
     <%end%>
+  <%else%>
+    <%= ", owned by " + @image.user.name %>
   <%end%>
 </h2>
 <img src='/images/<%=@image.filename%>'>
