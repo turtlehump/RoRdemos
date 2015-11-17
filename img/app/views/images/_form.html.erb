@@ -12,6 +12,9 @@
   <% end %>
 
   <div class="field">
+    <%= f.file_field :uploaded_file, require: :true %>
+  </div>
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>

@@ -29,6 +29,13 @@ class ImagesController < ApplicationController
   # POST /images
   def create
     @image = Image.new(image_params)
+    @image.generate_filename
+    @image.user = current_user
+    @uploaded_io = params[:image][:uploaded_file]
+
+    File.open(Rails.root.join('public', 'images', @image.filename), 'wb') do |file|
+        file.write(@uploaded_io.read)
+    end
 
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
