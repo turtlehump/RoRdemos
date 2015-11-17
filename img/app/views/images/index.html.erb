@@ -6,6 +6,7 @@
 
 <%if current_user%>
   <h2>OWNED IMAGES</h2>
+  <%= link_to 'New Image', new_image_path %><br>
   <%if @owned_imgs.size > 0%>
     <%@owned_imgs.each do |image|%>
       <dir class='image'>
@@ -18,6 +19,7 @@
     <p>You have not uploaded any images</p>
   <%end%>
   <hr>
+
   <h2>PRIVATE IMAGES</h2>
   <%if @private_imgs.size > 0%>
     <%@private_imgs.each do |image|%>
