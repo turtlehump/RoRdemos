@@ -10,9 +10,7 @@
   <%if @owned_imgs.size > 0%>
     <%@owned_imgs.each do |image|%>
       <div class='image'>
-        <a href="/images/<%=image.id%>">
-          <img src='/images/<%=image.filename%>' style='width:100px;>'>
-        </a>
+        <%= link_to (image_tag (root_url + "/images/" + image.filename), size: "100x100", alt: image.filename), image %>
       </div>
     <%end%>
   <%else%>
@@ -24,9 +22,7 @@
   <%if @private_imgs.size > 0%>
     <%@private_imgs.each do |image|%>
       <div class='image'>
-        <a href="/images/<%=image.id%>">
-          <img src='/images/<%=image.filename%>' style='width:100px;>'>
-        </a>
+        <%= link_to (image_tag (root_url + "/images/" + image.filename), size: "100x100", alt: image.filename), image %>
         <br>
         <%=image.user.name%>
       </div>
@@ -40,9 +36,7 @@
 <h2>PUBLIC IMAGES</h2>
 <%@public_imgs.each do |image|%>
   <div class='image'>
-    <a href="/images/<%=image.id%>">
-      <img src='/images/<%=image.filename%>' style='width:100px;>'>
-    </a>
+        <%= link_to (image_tag (root_url + "/images/" + image.filename), size: "100x100", alt: image.filename), image %>
     <br>
     <%=image.user.name%>
   </div>

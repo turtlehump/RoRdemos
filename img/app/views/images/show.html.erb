@@ -10,7 +10,7 @@
     <%= ", owned by " + @image.user.name %>
   <%end%>
 </h2>
-<img src='/images/<%=@image.filename%>'>
+<%= image_tag ("/images/" + @image.filename) %>
 
 <% if current_user == @image.user %>
   <%= form_for(@image) do |f| %>
