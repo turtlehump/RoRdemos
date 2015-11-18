@@ -59,12 +59,21 @@
 <%end%>
 
 <% if current_user == @image.user %>
-  <h3>Permissions</h3>
-  <% @image.users.each do |user| %>
-    <div>
-      <%= user.name %>
-    </div>
+  <% if @image.private %>
+    <h3>Permissions</h3>
+    <!-- this is eww, but it works -->
+    <% @image.image_users.each do |iu| %>
+      <% @users.each do |usr| %>
+        <% if iu.user_id == usr.id %>
+          <div>
+            <%= usr.name %>
+            <%= link_to 'Destroy', iu, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <%end%>
+      <%end%>
+    <%end%>
+    <!-- this is eww, but it works -->
+    <br>
+    <%= render 'image_users/form' %>
   <%end%>
-  <br>
-  <%= render 'image_users/form' %>
 <%end%>
