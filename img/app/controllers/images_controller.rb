@@ -56,7 +56,7 @@ class ImagesController < ApplicationController
     if @image.update(image_params)
       redirect_to @image, notice: 'Image was successfully updated.'
     else
-      render :edit
+      redirect_to @image, notice: 'Image was not updated.'
     end
   end
 
