@@ -21,9 +21,10 @@ class ImagesController < ApplicationController
     @tag = @image.tags.new
     @inside_users = @image.image_users.map { |iu| iu.user }.compact
     @users = User.all
-    cur_user = [current_user]
-    @possible_users = @users - cur_user
+    cur_user = [current_user]           #hacky
+    @possible_users = @users - cur_user #hacky
     @outsider_users = @possible_users - @inside_users
+    @outsider_users.delete_if {|usr| usr.admin}
     @image_user = @image.image_users.new
   end
 
