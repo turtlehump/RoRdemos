@@ -31,7 +31,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to image_url(@image) , notice: 'Tag was successfully created.'
     else #this should never happen, you cant input a bad tag
-      redirect_to image_url(@tag.image)
+      redirect_to image_url(@image) , notice: 'Tag was not created.'
     end
   end
 
